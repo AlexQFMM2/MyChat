@@ -1,0 +1,3 @@
+/home/alexqfmm/Codes/chat/build/CMakeFiles/rebuild_cache.dir
+/home/alexqfmm/Codes/chat/build/CMakeFiles/edit_cache.dir
+/home/alexqfmm/Codes/chat/build/CMakeFiles/ChatServer.dir
