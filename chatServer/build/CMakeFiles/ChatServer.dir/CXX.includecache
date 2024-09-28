@@ -396,11 +396,19 @@ any
 string_view
 -
 
-/home/alexqfmm/Codes/chat/MyServer.cpp
+/home/alexqfmm/Codes/chat/MyChat/chatServer/MyServer.cpp
 MyServer.hpp
-/home/alexqfmm/Codes/chat/MyServer.hpp
+/home/alexqfmm/Codes/chat/MyChat/chatServer/MyServer.hpp
+mutex
+-
+signal.h
+-
+map
+-
+set
+-
 
-/home/alexqfmm/Codes/chat/MyServer.hpp
+/home/alexqfmm/Codes/chat/MyChat/chatServer/MyServer.hpp
 iostream
 -
 arpa/inet.h
@@ -422,11 +430,11 @@ vector
 fcntl.h
 -
 MYJSON.hpp
-/home/alexqfmm/Codes/chat/MYJSON.hpp
+/home/alexqfmm/Codes/chat/MyChat/chatServer/MYJSON.hpp
 ThreadPool.hpp
-/home/alexqfmm/Codes/chat/ThreadPool.hpp
+/home/alexqfmm/Codes/chat/MyChat/chatServer/ThreadPool.hpp
 
-/home/alexqfmm/Codes/chat/ThreadPool.hpp
+/home/alexqfmm/Codes/chat/MyChat/chatServer/ThreadPool.hpp
 vector
 -
 queue

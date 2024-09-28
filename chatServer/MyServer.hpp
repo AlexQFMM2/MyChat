@@ -25,33 +25,14 @@ class MyServer{
         std::vector<epoll_event>ep_event;
         int epfd,event_cnt;
         ThreadPool pool;
-        void error_handler(const std::string& msg){
-            std::cerr << msg << ":" << strerror(errno)  << std::endl;
-            exit(1);
-        }
 
-        void set_nonblocking(int sock) { //将套接字改为非阻塞模式
-            int flag = fcntl(sock, F_GETFL, 0);
-            if (flag == -1) error_handler("fcntl get error");
-            if (fcntl(sock, F_SETFL, flag | O_NONBLOCK) == -1) {
-                error_handler("fcntl set non-blocking error");
-            }
-        }
+        void error_handler(const std::string& msg);
+        //将套接字改为非阻塞模式
+        void set_nonblocking(int sock);
 
-        void epoll_add(int type , int sock){
-            event.events = type | EPOLLET; //监听读事件 OUT 就是写
-            event.data.fd = sock; //将服务器套接字 sSock 的文件描述符赋值给 event 结构体中的 data 成员
-            if (epoll_ctl(epfd, EPOLL_CTL_ADD, sock, &event) == -1) {
-                error_handler("epoll_ctl() error");
-            }
-        }
+        void epoll_add(int type , int sock);
 
-        void epoll_del(int sock){
-            if (epoll_ctl(epfd, EPOLL_CTL_DEL, sock, nullptr) == -1) {
-                error_handler("epoll_ctl() delete error");
-            }
-            close(cSock);
-        }
+        void epoll_del(int sock);
 
         void accept_client();
 
@@ -59,18 +40,14 @@ class MyServer{
 
         std::vector<json> getcommand(int cSock);
 
-        void login(const std::string& username , const std::string&password){
-            std::cout << username << " & " << password << "\n is login !" << std::endl; 
-        }
+        void request_reponse(int cSock,json json_data);
 
-        void logout(int cSock){
-            std::cout << cSock << " is logout " << std::endl; 
-        }
+        void login(int cSock , const std::string& username , const std::string&password);
 
-        void chat(int cSock , const std::string& friendname , const std::string&msg){
-            std::cout << cSock << " is send msg : " << msg << "\n to " << friendname << std::endl;
-        }
 
+        void logout(int cSock , const std::string& username);
+
+        void chat(int cSock , const std::string& friendname , const std::string&msg);
 
     public:
         MyServer(const std::string port);

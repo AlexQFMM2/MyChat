@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/alexqfmm/Codes/chat/MYJSON.cpp" "/home/alexqfmm/Codes/chat/build/CMakeFiles/ChatServer.dir/MYJSON.cpp.o"
-  "/home/alexqfmm/Codes/chat/MyServer.cpp" "/home/alexqfmm/Codes/chat/build/CMakeFiles/ChatServer.dir/MyServer.cpp.o"
-  "/home/alexqfmm/Codes/chat/ThreadPool.cpp" "/home/alexqfmm/Codes/chat/build/CMakeFiles/ChatServer.dir/ThreadPool.cpp.o"
-  "/home/alexqfmm/Codes/chat/main.cpp" "/home/alexqfmm/Codes/chat/build/CMakeFiles/ChatServer.dir/main.cpp.o"
+  "/home/alexqfmm/Codes/chat/MyChat/chatServer/MYJSON.cpp" "/home/alexqfmm/Codes/chat/MyChat/chatServer/build/CMakeFiles/ChatServer.dir/MYJSON.cpp.o"
+  "/home/alexqfmm/Codes/chat/MyChat/chatServer/MyServer.cpp" "/home/alexqfmm/Codes/chat/MyChat/chatServer/build/CMakeFiles/ChatServer.dir/MyServer.cpp.o"
+  "/home/alexqfmm/Codes/chat/MyChat/chatServer/ThreadPool.cpp" "/home/alexqfmm/Codes/chat/MyChat/chatServer/build/CMakeFiles/ChatServer.dir/ThreadPool.cpp.o"
+  "/home/alexqfmm/Codes/chat/MyChat/chatServer/main.cpp" "/home/alexqfmm/Codes/chat/MyChat/chatServer/build/CMakeFiles/ChatServer.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

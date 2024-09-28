@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/alexqfmm/Codes/chatClient
+CMAKE_SOURCE_DIR = /home/alexqfmm/Codes/chat/MyChat/chatClient
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/alexqfmm/Codes/chatClient/build
+CMAKE_BINARY_DIR = /home/alexqfmm/Codes/chat/MyChat/chatClient/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alexqfmm/Codes/chatClient/build/CMakeFiles /home/alexqfmm/Codes/chatClient/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alexqfmm/Codes/chat/MyChat/chatClient/build/CMakeFiles /home/alexqfmm/Codes/chat/MyChat/chatClient/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alexqfmm/Codes/chatClient/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alexqfmm/Codes/chat/MyChat/chatClient/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -177,6 +177,33 @@ MYJSON.cpp.s:
 	$(MAKE) -f CMakeFiles/ChatClient.dir/build.make CMakeFiles/ChatClient.dir/MYJSON.cpp.s
 .PHONY : MYJSON.cpp.s
 
+ThreadPool.o: ThreadPool.cpp.o
+
+.PHONY : ThreadPool.o
+
+# target to build an object file
+ThreadPool.cpp.o:
+	$(MAKE) -f CMakeFiles/ChatClient.dir/build.make CMakeFiles/ChatClient.dir/ThreadPool.cpp.o
+.PHONY : ThreadPool.cpp.o
+
+ThreadPool.i: ThreadPool.cpp.i
+
+.PHONY : ThreadPool.i
+
+# target to preprocess a source file
+ThreadPool.cpp.i:
+	$(MAKE) -f CMakeFiles/ChatClient.dir/build.make CMakeFiles/ChatClient.dir/ThreadPool.cpp.i
+.PHONY : ThreadPool.cpp.i
+
+ThreadPool.s: ThreadPool.cpp.s
+
+.PHONY : ThreadPool.s
+
+# target to generate assembly for a file
+ThreadPool.cpp.s:
+	$(MAKE) -f CMakeFiles/ChatClient.dir/build.make CMakeFiles/ChatClient.dir/ThreadPool.cpp.s
+.PHONY : ThreadPool.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -219,6 +246,9 @@ help:
 	@echo "... MYJSON.o"
 	@echo "... MYJSON.i"
 	@echo "... MYJSON.s"
+	@echo "... ThreadPool.o"
+	@echo "... ThreadPool.i"
+	@echo "... ThreadPool.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

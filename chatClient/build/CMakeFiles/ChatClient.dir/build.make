@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/alexqfmm/Codes/chatClient
+CMAKE_SOURCE_DIR = /home/alexqfmm/Codes/chat/MyChat/chatClient
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/alexqfmm/Codes/chatClient/build
+CMAKE_BINARY_DIR = /home/alexqfmm/Codes/chat/MyChat/chatClient/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ChatClient.dir/depend.make
@@ -59,48 +59,62 @@ include CMakeFiles/ChatClient.dir/flags.make
 
 CMakeFiles/ChatClient.dir/main.cpp.o: CMakeFiles/ChatClient.dir/flags.make
 CMakeFiles/ChatClient.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alexqfmm/Codes/chatClient/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ChatClient.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatClient.dir/main.cpp.o -c /home/alexqfmm/Codes/chatClient/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alexqfmm/Codes/chat/MyChat/chatClient/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ChatClient.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatClient.dir/main.cpp.o -c /home/alexqfmm/Codes/chat/MyChat/chatClient/main.cpp
 
 CMakeFiles/ChatClient.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChatClient.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexqfmm/Codes/chatClient/main.cpp > CMakeFiles/ChatClient.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexqfmm/Codes/chat/MyChat/chatClient/main.cpp > CMakeFiles/ChatClient.dir/main.cpp.i
 
 CMakeFiles/ChatClient.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChatClient.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexqfmm/Codes/chatClient/main.cpp -o CMakeFiles/ChatClient.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexqfmm/Codes/chat/MyChat/chatClient/main.cpp -o CMakeFiles/ChatClient.dir/main.cpp.s
 
 CMakeFiles/ChatClient.dir/MYJSON.cpp.o: CMakeFiles/ChatClient.dir/flags.make
 CMakeFiles/ChatClient.dir/MYJSON.cpp.o: ../MYJSON.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alexqfmm/Codes/chatClient/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ChatClient.dir/MYJSON.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatClient.dir/MYJSON.cpp.o -c /home/alexqfmm/Codes/chatClient/MYJSON.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alexqfmm/Codes/chat/MyChat/chatClient/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ChatClient.dir/MYJSON.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatClient.dir/MYJSON.cpp.o -c /home/alexqfmm/Codes/chat/MyChat/chatClient/MYJSON.cpp
 
 CMakeFiles/ChatClient.dir/MYJSON.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChatClient.dir/MYJSON.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexqfmm/Codes/chatClient/MYJSON.cpp > CMakeFiles/ChatClient.dir/MYJSON.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexqfmm/Codes/chat/MyChat/chatClient/MYJSON.cpp > CMakeFiles/ChatClient.dir/MYJSON.cpp.i
 
 CMakeFiles/ChatClient.dir/MYJSON.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChatClient.dir/MYJSON.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexqfmm/Codes/chatClient/MYJSON.cpp -o CMakeFiles/ChatClient.dir/MYJSON.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexqfmm/Codes/chat/MyChat/chatClient/MYJSON.cpp -o CMakeFiles/ChatClient.dir/MYJSON.cpp.s
 
 CMakeFiles/ChatClient.dir/Client.cpp.o: CMakeFiles/ChatClient.dir/flags.make
 CMakeFiles/ChatClient.dir/Client.cpp.o: ../Client.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alexqfmm/Codes/chatClient/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ChatClient.dir/Client.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatClient.dir/Client.cpp.o -c /home/alexqfmm/Codes/chatClient/Client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alexqfmm/Codes/chat/MyChat/chatClient/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ChatClient.dir/Client.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatClient.dir/Client.cpp.o -c /home/alexqfmm/Codes/chat/MyChat/chatClient/Client.cpp
 
 CMakeFiles/ChatClient.dir/Client.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChatClient.dir/Client.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexqfmm/Codes/chatClient/Client.cpp > CMakeFiles/ChatClient.dir/Client.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexqfmm/Codes/chat/MyChat/chatClient/Client.cpp > CMakeFiles/ChatClient.dir/Client.cpp.i
 
 CMakeFiles/ChatClient.dir/Client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChatClient.dir/Client.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexqfmm/Codes/chatClient/Client.cpp -o CMakeFiles/ChatClient.dir/Client.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexqfmm/Codes/chat/MyChat/chatClient/Client.cpp -o CMakeFiles/ChatClient.dir/Client.cpp.s
+
+CMakeFiles/ChatClient.dir/ThreadPool.cpp.o: CMakeFiles/ChatClient.dir/flags.make
+CMakeFiles/ChatClient.dir/ThreadPool.cpp.o: ../ThreadPool.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alexqfmm/Codes/chat/MyChat/chatClient/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ChatClient.dir/ThreadPool.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatClient.dir/ThreadPool.cpp.o -c /home/alexqfmm/Codes/chat/MyChat/chatClient/ThreadPool.cpp
+
+CMakeFiles/ChatClient.dir/ThreadPool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChatClient.dir/ThreadPool.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexqfmm/Codes/chat/MyChat/chatClient/ThreadPool.cpp > CMakeFiles/ChatClient.dir/ThreadPool.cpp.i
+
+CMakeFiles/ChatClient.dir/ThreadPool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChatClient.dir/ThreadPool.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexqfmm/Codes/chat/MyChat/chatClient/ThreadPool.cpp -o CMakeFiles/ChatClient.dir/ThreadPool.cpp.s
 
 # Object files for target ChatClient
 ChatClient_OBJECTS = \
 "CMakeFiles/ChatClient.dir/main.cpp.o" \
 "CMakeFiles/ChatClient.dir/MYJSON.cpp.o" \
-"CMakeFiles/ChatClient.dir/Client.cpp.o"
+"CMakeFiles/ChatClient.dir/Client.cpp.o" \
+"CMakeFiles/ChatClient.dir/ThreadPool.cpp.o"
 
 # External object files for target ChatClient
 ChatClient_EXTERNAL_OBJECTS =
@@ -108,9 +122,10 @@ ChatClient_EXTERNAL_OBJECTS =
 ChatClient: CMakeFiles/ChatClient.dir/main.cpp.o
 ChatClient: CMakeFiles/ChatClient.dir/MYJSON.cpp.o
 ChatClient: CMakeFiles/ChatClient.dir/Client.cpp.o
+ChatClient: CMakeFiles/ChatClient.dir/ThreadPool.cpp.o
 ChatClient: CMakeFiles/ChatClient.dir/build.make
 ChatClient: CMakeFiles/ChatClient.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/alexqfmm/Codes/chatClient/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ChatClient"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/alexqfmm/Codes/chat/MyChat/chatClient/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ChatClient"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ChatClient.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -123,6 +138,6 @@ CMakeFiles/ChatClient.dir/clean:
 .PHONY : CMakeFiles/ChatClient.dir/clean
 
 CMakeFiles/ChatClient.dir/depend:
-	cd /home/alexqfmm/Codes/chatClient/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/alexqfmm/Codes/chatClient /home/alexqfmm/Codes/chatClient /home/alexqfmm/Codes/chatClient/build /home/alexqfmm/Codes/chatClient/build /home/alexqfmm/Codes/chatClient/build/CMakeFiles/ChatClient.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/alexqfmm/Codes/chat/MyChat/chatClient/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/alexqfmm/Codes/chat/MyChat/chatClient /home/alexqfmm/Codes/chat/MyChat/chatClient /home/alexqfmm/Codes/chat/MyChat/chatClient/build /home/alexqfmm/Codes/chat/MyChat/chatClient/build /home/alexqfmm/Codes/chat/MyChat/chatClient/build/CMakeFiles/ChatClient.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ChatClient.dir/depend
 
