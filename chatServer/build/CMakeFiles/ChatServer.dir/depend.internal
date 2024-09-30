@@ -5,9 +5,13 @@ CMakeFiles/ChatServer.dir/MYJSON.cpp.o
  /home/alexqfmm/Codes/chat/MyChat/chatServer/MYJSON.cpp
  /home/alexqfmm/Codes/chat/MyChat/chatServer/MYJSON.hpp
  /home/alexqfmm/Codes/chat/MyChat/chatServer/json.hpp
+CMakeFiles/ChatServer.dir/MyDatabase.cpp.o
+ /home/alexqfmm/Codes/chat/MyChat/chatServer/MyDatabase.cpp
+ /home/alexqfmm/Codes/chat/MyChat/chatServer/MyDatabase.hpp
 CMakeFiles/ChatServer.dir/MyServer.cpp.o
  ../MYJSON.hpp
  ../json.hpp
+ /home/alexqfmm/Codes/chat/MyChat/chatServer/MyDatabase.hpp
  /home/alexqfmm/Codes/chat/MyChat/chatServer/MyServer.cpp
  /home/alexqfmm/Codes/chat/MyChat/chatServer/MyServer.hpp
  /home/alexqfmm/Codes/chat/MyChat/chatServer/ThreadPool.hpp
@@ -17,6 +21,7 @@ CMakeFiles/ChatServer.dir/ThreadPool.cpp.o
 CMakeFiles/ChatServer.dir/main.cpp.o
  ../MYJSON.hpp
  ../json.hpp
+ /home/alexqfmm/Codes/chat/MyChat/chatServer/MyDatabase.hpp
  /home/alexqfmm/Codes/chat/MyChat/chatServer/MyServer.hpp
  /home/alexqfmm/Codes/chat/MyChat/chatServer/ThreadPool.hpp
  /home/alexqfmm/Codes/chat/MyChat/chatServer/main.cpp

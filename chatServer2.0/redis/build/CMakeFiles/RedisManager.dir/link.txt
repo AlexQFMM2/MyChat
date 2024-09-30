@@ -1,0 +1,2 @@
+/usr/bin/ar qc libRedisManager.a  CMakeFiles/RedisManager.dir/RedisManager.cpp.o CMakeFiles/RedisManager.dir/RedisPool.cpp.o
+/usr/bin/ranlib libRedisManager.a

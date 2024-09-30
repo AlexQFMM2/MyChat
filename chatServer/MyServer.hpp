@@ -42,15 +42,8 @@ class MyServer{
 
         void request_reponse(int cSock,json json_data);
 
-        void login(int cSock , const std::string& username , const std::string&password);
-
-
-        void logout(int cSock , const std::string& username);
-
-        void chat(int cSock , const std::string& friendname , const std::string&msg);
-
     public:
-        MyServer(const std::string port);
+        MyServer(const std::string port,const std::string dbname);
         ~MyServer();
         void server_start();
 };

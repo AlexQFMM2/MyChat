@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/test.dir/test.cpp.o  -o test  libRedisManager.a /usr/lib/x86_64-linux-gnu/libhiredis.so -lpthread 

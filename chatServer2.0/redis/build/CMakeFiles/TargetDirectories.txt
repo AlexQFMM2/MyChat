@@ -1,0 +1,4 @@
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/build/CMakeFiles/edit_cache.dir
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/build/CMakeFiles/test.dir
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/build/CMakeFiles/rebuild_cache.dir
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/build/CMakeFiles/RedisManager.dir

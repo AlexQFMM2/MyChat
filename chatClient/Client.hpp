@@ -7,6 +7,7 @@
 #include <condition_variable>
 #include "MYJSON.hpp"
 #include "ThreadPool.hpp"
+#include <sys/epoll.h>
 
 using json = nlohmann::json;
 
@@ -16,7 +17,7 @@ private:
     std::string username;
     std::string password;
     bool isConnected = false;
-    std::thread listenerThread;
+    bool exitRequested = false;
 
     std::mutex mtx;
     std::condition_variable cv;
@@ -38,6 +39,7 @@ public:
     void send_message(int sock, const json& message);
     void setUsername(const std::string& uname);  // 设置用户名
     void setPassword(const std::string& passwd);  // 设置密码
+    void close_client();
     ~Client();
 };
 

@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/DataBaseTest.dir/DatabasePool.cpp.o CMakeFiles/DataBaseTest.dir/DatabaseManager.cpp.o CMakeFiles/DataBaseTest.dir/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/json/MYJSON.cpp.o CMakeFiles/DataBaseTest.dir/test.cpp.o  -o DataBaseTest  /usr/lib/x86_64-linux-gnu/libmysqlclient.so /usr/lib/x86_64-linux-gnu/libmysqlcppconn.so 

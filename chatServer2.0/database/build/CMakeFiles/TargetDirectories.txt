@@ -1,0 +1,3 @@
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/database/build/CMakeFiles/rebuild_cache.dir
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/database/build/CMakeFiles/edit_cache.dir
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/database/build/CMakeFiles/DataBaseTest.dir

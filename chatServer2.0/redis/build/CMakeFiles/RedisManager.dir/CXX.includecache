@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/RedisManager.cpp
+RedisManager.hpp
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/RedisManager.hpp
+
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/RedisManager.hpp
+string
+-
+vector
+-
+hiredis/hiredis.h
+-
+RedisPool.hpp
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/RedisPool.hpp
+
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/RedisPool.hpp
+hiredis/hiredis.h
+-
+queue
+-
+mutex
+-
+string
+-
+iostream
+-
+stdexcept
+-
+memory
+-
+condition_variable
+-
+functional
+-
+

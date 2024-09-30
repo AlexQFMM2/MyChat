@@ -230,6 +230,12 @@ ChatServer_BINARY_DIR:STATIC=/home/alexqfmm/Codes/chat/MyChat/chatServer/build
 //Value Computed by CMake
 ChatServer_SOURCE_DIR:STATIC=/home/alexqfmm/Codes/chat/MyChat/chatServer
 
+//Path to a file.
+MYSQL_INCLUDE_DIR:PATH=/usr/include/mysql
+
+//Path to a library.
+MYSQL_LIBRARIES:FILEPATH=/usr/lib/x86_64-linux-gnu/libmysqlclient.so
+
 
 ########################
 # INTERNAL cache entries

@@ -396,6 +396,30 @@ any
 string_view
 -
 
+/home/alexqfmm/Codes/chat/MyChat/chatServer/MyDatabase.cpp
+MyDatabase.hpp
+/home/alexqfmm/Codes/chat/MyChat/chatServer/MyDatabase.hpp
+chrono
+-
+iomanip
+-
+sstream
+-
+
+/home/alexqfmm/Codes/chat/MyChat/chatServer/MyDatabase.hpp
+mysql/mysql.h
+-
+string
+-
+iostream
+-
+vector
+-
+any
+-
+typeinfo
+-
+
 /home/alexqfmm/Codes/chat/MyChat/chatServer/MyServer.cpp
 MyServer.hpp
 /home/alexqfmm/Codes/chat/MyChat/chatServer/MyServer.hpp
@@ -433,6 +457,8 @@ MYJSON.hpp
 /home/alexqfmm/Codes/chat/MyChat/chatServer/MYJSON.hpp
 ThreadPool.hpp
 /home/alexqfmm/Codes/chat/MyChat/chatServer/ThreadPool.hpp
+MyDatabase.hpp
+/home/alexqfmm/Codes/chat/MyChat/chatServer/MyDatabase.hpp
 
 /home/alexqfmm/Codes/chat/MyChat/chatServer/ThreadPool.hpp
 vector
@@ -453,4 +479,8 @@ memory
 -
 stdexcept
 -
+
+/home/alexqfmm/Codes/chat/MyChat/chatServer/main.cpp
+MyServer.hpp
+/home/alexqfmm/Codes/chat/MyChat/chatServer/MyServer.hpp
 

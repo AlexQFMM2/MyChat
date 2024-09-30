@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++2a
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/alexqfmm/Codes/chat/MyChat/chatServer 
+CXX_INCLUDES = -I/home/alexqfmm/Codes/chat/MyChat/chatServer -I/usr/include/mysql 
 

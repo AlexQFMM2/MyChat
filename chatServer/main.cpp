@@ -7,7 +7,7 @@ int main(int argc , char* argv[]){
         exit(1);
     }
 
-    MyServer server(argv[1]);
+    MyServer server(argv[1],"ChatServer");
     server.server_start();
 
     return 0;

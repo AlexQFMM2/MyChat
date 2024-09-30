@@ -56,6 +56,8 @@ void startMenu() {
             userMenu();
         }
     } else if (op[0] == '2') {
+        std::cout << "close client..." << std::endl;
+        user.close_client();
         exit(0);
     }    
 }

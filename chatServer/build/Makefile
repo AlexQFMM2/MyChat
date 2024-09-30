@@ -150,6 +150,33 @@ MYJSON.cpp.s:
 	$(MAKE) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/MYJSON.cpp.s
 .PHONY : MYJSON.cpp.s
 
+MyDatabase.o: MyDatabase.cpp.o
+
+.PHONY : MyDatabase.o
+
+# target to build an object file
+MyDatabase.cpp.o:
+	$(MAKE) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/MyDatabase.cpp.o
+.PHONY : MyDatabase.cpp.o
+
+MyDatabase.i: MyDatabase.cpp.i
+
+.PHONY : MyDatabase.i
+
+# target to preprocess a source file
+MyDatabase.cpp.i:
+	$(MAKE) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/MyDatabase.cpp.i
+.PHONY : MyDatabase.cpp.i
+
+MyDatabase.s: MyDatabase.cpp.s
+
+.PHONY : MyDatabase.s
+
+# target to generate assembly for a file
+MyDatabase.cpp.s:
+	$(MAKE) -f CMakeFiles/ChatServer.dir/build.make CMakeFiles/ChatServer.dir/MyDatabase.cpp.s
+.PHONY : MyDatabase.cpp.s
+
 MyServer.o: MyServer.cpp.o
 
 .PHONY : MyServer.o
@@ -243,6 +270,9 @@ help:
 	@echo "... MYJSON.o"
 	@echo "... MYJSON.i"
 	@echo "... MYJSON.s"
+	@echo "... MyDatabase.o"
+	@echo "... MyDatabase.i"
+	@echo "... MyDatabase.s"
 	@echo "... MyServer.o"
 	@echo "... MyServer.i"
 	@echo "... MyServer.s"

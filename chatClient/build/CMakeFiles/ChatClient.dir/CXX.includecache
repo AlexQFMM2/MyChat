@@ -31,6 +31,8 @@ MYJSON.hpp
 /home/alexqfmm/Codes/chat/MyChat/chatClient/MYJSON.hpp
 ThreadPool.hpp
 /home/alexqfmm/Codes/chat/MyChat/chatClient/ThreadPool.hpp
+sys/epoll.h
+-
 
 /home/alexqfmm/Codes/chat/MyChat/chatClient/MYJSON.hpp
 json.hpp
@@ -440,5 +442,11 @@ vector
 any
 -
 string_view
+-
+
+/home/alexqfmm/Codes/chat/MyChat/chatClient/main.cpp
+Client.hpp
+/home/alexqfmm/Codes/chat/MyChat/chatClient/Client.hpp
+iostream
 -
 

@@ -6,7 +6,8 @@
 // 忽略 SIGPIPE 信号
 std::mutex user_mutex;
 
-std::mutex client_mutex; // 用于保护共享资源的互斥锁
+// 用于保护共享资源的互斥锁
+std::mutex client_mutex; 
 
 void MyServer::error_handler(const std::string& msg) {
     std::cerr << msg << ": " << strerror(errno) << std::endl;
@@ -38,8 +39,9 @@ void MyServer::epoll_del(int sock) {
     close(sock); // 关闭套接字
 }
 
-MyServer::MyServer(const std::string port) 
+MyServer::MyServer(const std::string port,const std::string dbname) 
 : sSock(socket(PF_INET, SOCK_STREAM, 0)), epfd(epoll_create1(0)), pool(10) {
+
     if (sSock < 0) {
         error_handler("socket error");
     }
@@ -164,109 +166,25 @@ void MyServer::work(int cSock) {
         return;
     }
 
+    //int who = command["who"];
+    /*
+        为什么 who 不必要
+        command["who"] 是从客户端发送的数据中提取的，它本质上只是一个逻辑上的标识符，而不是系统分配的套接字。
+        使用 cSock 来确保每个任务对应的是正确的客户端连接比依赖客户端传来的 who 更加可靠。
+    */
+
     for (const json& command : commands) {
-        pool.enqueue([this, command , cSock] {
-            if (command.contains("command")) {
-                std::string response = command["command"];
-                //int who = command["who"];
-                /*
-                    为什么 who 不必要
-                    command["who"] 是从客户端发送的数据中提取的，它本质上只是一个逻辑上的标识符，而不是系统分配的套接字。
-                    使用 cSock 来确保每个任务对应的是正确的客户端连接比依赖客户端传来的 who 更加可靠。
-                */
-                if (response == "LOGIN") {
+        if (command.contains("command")) {
+            std::string response = command["command"];
+            /*
+            if (response == "LOGIN") {
+                pool.enqueue([this, cSock, command] {
                     this->login(cSock, command["username"], command["passwd"]);
-                } else if (response == "LOGOUT") {
-                    this->logout(cSock , command["username"]);
-                } else if (response == "CHAT") {
-                    this->chat(cSock, command["friendName"], command["message"]);
-                }
-            }
-        });
-    }
-}
-
-//后续改为连接数据库
-std::map<std::string,std::string>test_user = {{"alex","12345"},{"peter","12345"},{"sam" , "12345"}};
-std::set<std::string>test_online = {};
-std::map<std::string,int>online_hash_sock;
-std::map<int,std::string>online_hash_username;
-
-void print_online(){
-    std::cout << "online : "; 
-                for(auto s:test_online){
-                    std::cout << s << " ";
-                }
-                std::cout << std::endl;
-}
-
-void MyServer::login(int cSock, const std::string& username, const std::string& password) {
-    json json_data;
-    json_data["command"] = "CONFIRMATION";
-    json_data["flag"] = false;
-
-    std::lock_guard<std::mutex> lock(user_mutex); // 加锁以确保线程安全
-
-    if (test_user.count(username) > 0 && test_user[username] == password) {
-        if (test_online.count(username) == 0) {
-            // 用户在线状态更新
-            test_online.insert(username);
-            online_hash_sock[username] = cSock;
-            online_hash_username[cSock] = username;
-
-            json_data["flag"] = true;
-            json_data["message"] = "登陆成功!";
-            print_online(); // 打印在线用户
-        } else {
-            json_data["message"] = "你的账号已在线";
+                });
+            } 
+            */
         }
-    } else {
-        json_data["message"] = "用户名或密码错误";
     }
 
-    request_reponse(cSock, json_data);
-}
-
-//后面数据库就能不用username了，online表直接存username 和 cSock，用 cSock删除
-void MyServer::logout(int cSock, const std::string& username) {
-    json json_data;
-    json_data["command"] = "CONFIRMATION";
-    json_data["flag"] = false;
-
-    std::lock_guard<std::mutex> lock(user_mutex); // 确保线程安全
-
-    if (test_online.count(username) != 0) {
-        test_online.erase(username);
-        online_hash_username.erase(cSock);
-        online_hash_sock.erase(username);
-
-        json_data["flag"] = true;
-        json_data["message"] = "登出成功!";
-    } else {
-        json_data["message"] = "登出失败，请稍后重试";
-    }
-
-    request_reponse(cSock, json_data);
-}
-
-void MyServer::chat(int cSock, const std::string &friendname, const std::string &msg) {
-    json json_data;
-    json_data["command"] = "CHAT";
-    json_data["friendName"] = online_hash_username[cSock];
-    json_data["message"] = msg;
-
-    if (online_hash_sock.count(friendname) > 0) {
-        int send_sock = online_hash_sock[friendname];
-        std::string transpond = json_data.dump() + SEND_END; 
-        send(send_sock, transpond.c_str(), transpond.size(), 0);
-    } else {
-        // 好友不在线，发送通知给发送者
-        json_data.clear();  // 清除原来的消息内容
-        json_data["command"] = "CONFIRMATION";  // 设定命令为错误通知
-        json_data["flag"] = false;
-        json_data["message"] = friendname + " 不在线.";  // 设定提示信息
-        std::string error_response = json_data.dump() + SEND_END;
-        send(cSock, error_response.c_str(), error_response.size(), 0);  // 发送错误消息
-    }
 }
 

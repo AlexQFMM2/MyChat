@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ChatServer.dir/MYJSON.cpp.o"
+  "CMakeFiles/ChatServer.dir/MyDatabase.cpp.o"
   "CMakeFiles/ChatServer.dir/MyServer.cpp.o"
   "CMakeFiles/ChatServer.dir/ThreadPool.cpp.o"
   "CMakeFiles/ChatServer.dir/main.cpp.o"

@@ -34,8 +34,10 @@ Client::Client(int numThreads)
         exit(1);
     }
 
-    // 启动监听线程
-    listenerThread = std::thread(&Client::listen_to_server, this);
+    // 启动监听任务
+    threadPool.enqueue([this]() {
+        listen_to_server();
+    });
 }
 
 // 连接服务器
@@ -63,59 +65,105 @@ void Client::setPassword(const std::string& passwd) {
     password = passwd;
 }
 
-// 接收服务器消息并加入线程池处理
-void Client::listen_to_server() {
-    while (true) {
-        char buffer[1024];
-        int len = recv(cSock, buffer, sizeof(buffer), 0);
-        if (len <= 0) {
-            std::cerr << "Error or connection closed by server" << std::endl;
-            break;
-        }
-        
-        std::string data(buffer, len);
-        size_t pos = data.find(SEND_END);
-        if (pos != std::string::npos) {
-            data.erase(pos, SEND_END.length());
-        }
-        
-        try {
-            json request = json::parse(data);
+// 析构函数
+Client::~Client() {
+    close_client();  // 关闭客户端
 
-            // 根据不同类型将任务分配给线程池
-            if (request["command"] == "CHAT") {
-                threadPool.enqueue([this, request]() {
-                    handle_chat_message(request["friendName"], request["message"]);
-                });
-            } else if (request["command"] == "CONFIRMATION") {
-                threadPool.enqueue([this, request]() {
-                    std::lock_guard<std::mutex> lock(mtx);
-                    confirmation_status = request["flag"] ? "SUCCESS" : "FAILURE";
-                    std::cout << request["message"] << std::endl;
-                    cv.notify_one();
-                });
-            } else {
-                std::cerr << "Unknown command received: " << request["command"] << std::endl;
+    std::cout << "Client is closed" << std::endl;
+}
+
+// 关闭客户端
+void Client::close_client() {
+    {
+        std::lock_guard<std::mutex> lock(mtx);
+        isConnected = false;  // 设置为不连接
+        exitRequested = true;  // 设置退出请求
+    }
+    std::cout << "wait all thread exit...." << std::endl;
+    cv.notify_all(); // 通知所有线程以检查退出请求
+
+    // 关闭套接字
+    if (cSock != -1) {  // 确保套接字有效
+        close(cSock);
+        std::cout << cSock << " is closed." << std::endl;
+    }
+}
+
+void Client::listen_to_server() {
+    int epollFd = epoll_create1(0);
+    if (epollFd == -1) {
+        std::cerr << "Failed to create epoll file descriptor" << std::endl;
+        return;
+    }
+
+    epoll_event event;
+    event.events = EPOLLIN;  // 监视可读事件
+    event.data.fd = cSock;   // 添加到 epoll 中的 socket
+    if (epoll_ctl(epollFd, EPOLL_CTL_ADD, cSock, &event) == -1) {
+        std::cerr << "Failed to add socket to epoll" << std::endl;
+        close(epollFd);
+        return;
+    }
+
+    while (true) {
+        epoll_event events[10]; // 事件数组
+        int numEvents = epoll_wait(epollFd, events, 10, 1000); // 超时 1 秒
+
+        // 检查是否请求退出
+        {
+            std::lock_guard<std::mutex> lock(mtx);
+            if (exitRequested) {
+                break;  // 退出线程
             }
-        } catch (const std::exception& e) {
-            std::cerr << "JSON parse error: " << e.what() << std::endl;
+        }  // 释放锁
+
+        for (int i = 0; i < numEvents; ++i) {
+            if (events[i].data.fd == cSock) {
+                char buffer[1024];
+                int len = recv(cSock, buffer, sizeof(buffer), 0);
+                if (len <= 0) {
+                    std::cerr << "Error or connection closed by server" << std::endl;
+                    close(epollFd);  // 关闭 epoll
+                    return; // 退出线程
+                }
+
+                std::string data(buffer, len);
+                size_t pos = data.find(SEND_END);
+                if (pos != std::string::npos) {
+                    data.erase(pos, SEND_END.length());
+                }
+
+                try {
+                    json request = json::parse(data);
+
+                    // 根据不同类型将任务分配给线程池
+                    if (request["command"] == "CHAT") {
+                        threadPool.enqueue([this, request]() {
+                            handle_chat_message(request["friendName"], request["message"]);
+                        });
+                    } else if (request["command"] == "CONFIRMATION") {
+                        threadPool.enqueue([this, request]() {
+                            std::lock_guard<std::mutex> lock(mtx);
+                            confirmation_status = request["flag"] ? "SUCCESS" : "FAILURE";
+                            std::cout << request["message"] << std::endl;
+                            cv.notify_one();  // 唤醒等待的线程
+                        });
+                    } else {
+                        std::cerr << "Unknown command received: " << request["command"] << std::endl;
+                    }
+                } catch (const std::exception& e) {
+                    std::cerr << "JSON parse error: " << e.what() << std::endl;
+                }
+            }
         }
     }
+
+    close(epollFd); // 清理 epoll 文件描述符
 }
 
 // 处理聊天消息
 void Client::handle_chat_message(const std::string& friendname, const std::string& msg) {
     std::cout << "从 " << friendname << " 收到消息: " << msg << std::endl;
-}
-
-// 析构函数
-Client::~Client() {
-    isConnected = false;
-    close(cSock);
-    if (listenerThread.joinable()) {
-        listenerThread.join();  // 确保监听线程安全退出
-    }
-    std::cout << cSock << " is closed " << std::endl;
 }
 
 // 登录功能
