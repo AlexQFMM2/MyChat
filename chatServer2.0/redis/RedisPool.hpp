@@ -21,7 +21,7 @@ public:
     
 
 private:  
-    std::queue<redisContext*> connectionPool; // 连接池  
+    std::queue<std::unique_ptr<redisContext, std::function<void(redisContext*)>>> connectionPool; // 连接池  
     std::mutex mtx; // 互斥锁  
     int maxPoolSize; // 最大连接数  
     std::condition_variable cv; // 条件变量  

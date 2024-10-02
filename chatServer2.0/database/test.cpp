@@ -45,14 +45,16 @@ int main() {
     // 获取并初始化单例  
     DatabaseManager& db = DatabaseManager::getInstance(dbconfig);  
 
-    // 测试 SQL 查询  
-    string sql = "SELECT * FROM Login where username = ? and password = ?"; // 或其他测试 SQL  
-    std::vector<std::any> vars = {std::make_any<std::string>("user1"), std::make_any<std::string>("a12345")};
+    int i = 0;
+    do{
+        // 测试 SQL 查询  
+        string sql = "SELECT * FROM Login where username = ? and password = ?"; // 或其他测试 SQL  
+        std::vector<std::any> vars = {std::make_any<std::string>("user1"), std::make_any<std::string>("a12345")};
 
-    //string sql = "delete from Login where username = ?";
-    //std::vector<std::any> vars = {std::make_any<std::string>("user9")};
-    cout << "exec sql...." << endl;
-    test_sql(sql, vars, db); // 执行测试查询  
+        cout << "exec sql...." << endl;
+        test_sql(sql, vars, db); // 执行测试查询  
+    }while(++i < 10);
+    
 
     return 0;  
 }  

@@ -6,17 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/RedisManager.cpp
-RedisManager.hpp
-/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/RedisManager.hpp
-
-/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/RedisManager.hpp
-string
--
-vector
--
-hiredis/hiredis.h
--
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/RedisPool.cpp
 RedisPool.hpp
 /home/alexqfmm/Codes/chat/MyChat/chatServer2.0/redis/RedisPool.hpp
 

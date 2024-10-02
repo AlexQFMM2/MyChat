@@ -4,12 +4,7 @@
 DatabasePool::DatabasePool() = default;  
 
 DatabasePool::~DatabasePool() {  
-    // 释放连接池中的所有连接  
-    while (!connectionPool.empty()) {  
-        sql::Connection* conn = connectionPool.front();  
-        delete conn;   
-        connectionPool.pop();  
-    }  
+   
 }  
 
 void DatabasePool::initPool(json dbconfig) {  
@@ -24,35 +19,73 @@ void DatabasePool::initPool(json dbconfig) {
 void DatabasePool::createPool(size_t size) {  
     sql::Driver* driver = get_driver_instance();   
     for (size_t i = 0; i < size; ++i) {  
-        sql::Connection* conn = driver->connect(dbHost, dbUser, dbPassword);  
+        auto conn = driver->connect(dbHost, dbUser, dbPassword);  
         conn->setSchema(dbDatabase);  
-        connectionPool.push(conn);  
+
+        auto connPtr = std::unique_ptr<sql::Connection, std::function<void(sql::Connection*)>>(conn, [this](sql::Connection*conn) {  
+            this->releaseConnection(conn);  
+        });  
+
+        {  
+            std::lock_guard<std::mutex> lock(poolMutex);  
+            connectionPool.push(std::move(connPtr));  
+        }  
     }  
-}  
+}
 
 // 获取连接  
 //std::unique_ptr<redisContext, std::function<void(redisContext*)>>
-std::unique_ptr<sql::Connection , std::function<void(sql::Connection*)>> DatabasePool::getConnection() {  
+std::unique_ptr<sql::Connection, std::function<void(sql::Connection*)>> DatabasePool::getConnection() {  
     std::unique_lock<std::mutex> lock(poolMutex);  
     while (connectionPool.empty()) {  
-        cv.wait(lock);   
+        cv.wait(lock);  
     }  
-
-    sql::Connection* conn = connectionPool.front();  
+    
+    auto connPtr = std::move(connectionPool.front());  
     connectionPool.pop();  
 
-    //std::cout << "pool can use thread : " << connectionPool.size() << std::endl;
+    //std::cout << "now connect has: " << connectionPool.size() << std::endl;
 
-    // 使用 unique_ptr 管理连接的生命周期，使用默认删除器  
-    return std::unique_ptr<sql::Connection , std::function<void(sql::Connection*)>>(conn , [this](sql::Connection* conn){
-        this->releaseConnection(conn);
-    });  
-}  
+    return connPtr;  
+}
 
-// 释放连接  
 void DatabasePool::releaseConnection(sql::Connection *conn) {  
-    std::lock_guard<std::mutex> lock(poolMutex);  
-    connectionPool.push(conn);  
-    std::cout << "pool can use thread : " << connectionPool.size() << std::endl;
-    cv.notify_one();   
+    bool isConnectionValid = true;  
+
+    try {  
+        // 检查连接是否有效，执行一个简单的查询  
+        std::unique_ptr<sql::Statement> stmt(conn->createStatement());  
+        stmt->execute("SELECT * FROM test");  
+    } catch (const sql::SQLException& e) {  
+        isConnectionValid = false;  
+    }  
+
+    if (!isConnectionValid) {  
+        try {  
+            // 重新初始化连接  
+            sql::Driver* driver = get_driver_instance();  
+            sql::Connection* newConn = driver->connect(dbHost, dbUser, dbPassword);  
+            newConn->setSchema(dbDatabase);  
+            conn = newConn;  
+        } catch (const sql::SQLException& e) {  
+            // 记录失败信息并防止添加连接到池中  
+            // 这里你可以选择记录日志以了解初始化失败的原因  
+            delete conn;   
+            return;  
+        }  
+    }  
+    
+    // 将连接入池  
+    {  
+        std::unique_lock<std::mutex> lock(poolMutex);  
+
+        // 清空原有连接，替换为新连接，并放回队列  
+        connectionPool.push(std::unique_ptr<sql::Connection, std::function<void(sql::Connection*)>>(  
+            conn, [this](sql::Connection*conn) {  
+                this->releaseConnection(conn);  
+            }));  
+
+        // 通知等待的线程有可用连接  
+        cv.notify_one();  
+    }  
 }

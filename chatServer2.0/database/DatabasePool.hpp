@@ -8,6 +8,7 @@
 #include <condition_variable>  
 #include <cppconn/driver.h>  
 #include <cppconn/connection.h>  
+#include <cppconn/statement.h>  
 #include <functional>
 #include "MYJSON.hpp"  
 
@@ -23,7 +24,7 @@ public:
 private:  
     void createPool(size_t size); // 创建连接池  
 
-    std::queue<sql::Connection*> connectionPool; // 连接池  
+    std::queue<std::unique_ptr<sql::Connection , std::function<void(sql::Connection*)>>> connectionPool; // 连接池  
     std::mutex poolMutex; // 互斥量  
     std::condition_variable cv; // 条件变量  
 

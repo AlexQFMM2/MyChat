@@ -396,6 +396,10 @@ any
 string_view
 -
 
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/database/DatabaseManager.cpp
+DatabaseManager.hpp
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/database/DatabaseManager.hpp
+
 /home/alexqfmm/Codes/chat/MyChat/chatServer2.0/database/DatabaseManager.hpp
 DatabasePool.hpp
 /home/alexqfmm/Codes/chat/MyChat/chatServer2.0/database/DatabasePool.hpp
@@ -420,6 +424,12 @@ cppconn/resultset.h
 MYJSON.hpp
 /home/alexqfmm/Codes/chat/MyChat/chatServer2.0/database/MYJSON.hpp
 
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/database/DatabasePool.cpp
+DatabasePool.hpp
+/home/alexqfmm/Codes/chat/MyChat/chatServer2.0/database/DatabasePool.hpp
+stdexcept
+-
+
 /home/alexqfmm/Codes/chat/MyChat/chatServer2.0/database/DatabasePool.hpp
 memory
 -
@@ -434,6 +444,8 @@ condition_variable
 cppconn/driver.h
 -
 cppconn/connection.h
+-
+cppconn/statement.h
 -
 functional
 -

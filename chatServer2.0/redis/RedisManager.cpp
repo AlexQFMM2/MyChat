@@ -32,7 +32,6 @@ void RedisManager::saveUserSession(const std::string& username, int client_sock)
      // 将用户添加到活跃用户集合中  
     redisCommand(conn.get(), "SADD active_users %s", username.c_str());  
 
-    redis_pool.releaseConnection(conn.release());  // 释放 unique_ptr 并将连接放回
 }
 
 void RedisManager::updateUserActivity(const std::string& username) {  
